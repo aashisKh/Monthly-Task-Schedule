@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./design.css">
+</head>
+<body>
+    <div id="task-input-box">
+        <div id="task-box">
+            <div contenteditable="true" id="task-name" placeholder="Task Name"></div>
+            <div>
+                <select id="hours">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select id="minutes">
+                    <option value="00">00</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+                <select id="am-pm">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+            </div>
+            <div id="update-task-status-section">
+                <div id="update-task-status-box">
+                    <h5>Task Status</h5>
+                    <small>Process</small> <span class="process status-box" data-status="process" data-index = '0'></span>
+                    <small>Done</small> <span class="done status-box" data-status="done" data-index="1"></span>
+                    <small>Cancel</small> <span class="cancel status-box" data-status="cancel" data-index="2"></span>
+                </div>
+            </div>
+            <div style="display: flex;justify-content: space-between;width: 99%;">
+                <button id="add"> Add </button>
+                <button id="update"> Update </button>
+                <button id="cancel"> Cancel </button>
+            </div>
+        </div>
+    </div>
+    <div class="calendar-wrapper">
+        <div id="calendar">
+            <div class="calendar-name"> MONTHLY SCHEDULE </div>
+            <div id="calendar-header">
+                <div id="prevMonth" class="changeMonth"> &lt; </div>
+                <div id="monthYear"></div>
+                <div id="nextMonth" class="changeMonth"> &gt; </div>
+                
+            </div>
+            <div id="calendar-days">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days" id="days">
+                </div>
+            </div>
+        </div>
+       
+        <div id="task-list-box">
+            <div>
+                <div id="task-heading"> Task Lists </div>
+                <div id="task-lists">
+                    <ul id="tasks">
+                    </ul>
+                    
+                </div>
+            </div>
+            <div id="add-task"> + </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
