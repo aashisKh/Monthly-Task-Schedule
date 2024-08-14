@@ -1,0 +1,115 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    background-color: #111827;
+    height: 100vh;
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form form{
+    background-color: #1F2937;
+    width: 30%;
+    min-width: 310px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+    border-radius: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 1px solid #FFFFFF30;
+    color: white;
+}
+
+.form form .form-box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+}
+
+.form-box, .action, .forgot-passsword{
+    width: 90%;
+}
+
+.form-box input{
+    padding: 8px;
+    outline: none;
+    border: none;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #374151;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+ .form-box input:focus{
+    outline: 2px solid #3B82F6;
+}
+
+
+
+.form-box label{
+    font-weight:lighter;
+    word-spacing:1px;
+    color: white;
+}
+
+.form form  .action{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form form .action button{
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #1D4ED8;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    height: 40px;
+    color: white;
+    border-radius: 5px;
+}
+
+.form form .action button:hover{
+    background-color: #426de3;
+}
+
+.forgot-passsword{
+    display: flex;
+    justify-content: flex-end;
+}
+
+ a{
+    text-decoration: none;
+    color: #3B6AAB;
+    font-size: 14px;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.no-account{
+    font-size: 13px;
+}

@@ -6,9 +6,6 @@
 }
 
 body {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     background-color: #f0f0f0;
     overflow-x: hidden;
 }
@@ -192,7 +189,7 @@ ul::-webkit-scrollbar {
     flex-basis: auto;
     border-radius: 10px;
     min-height: 90px;
-    /* align-items: end; */
+    align-items: center;
 }
 
 ul li p{
@@ -204,10 +201,10 @@ ul li i{
 }
 #task-status-time{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-direction: column;
-    align-items: flex-end;
-   width: 25%;
+    height: 50px;
+    width: 25%;
 }
 
 #status{
@@ -249,7 +246,7 @@ ul li i{
 }
 
 .done{
-    background-color: rgb(14, 232, 14);
+    background-color: green;
 }
 
 .cancel{
@@ -257,10 +254,10 @@ ul li i{
 }
 
 .status-color-new {
-    background-color: lightgray;
+    background-color: gray;
 }
 .status-color-done {
-    background-color: rgb(14, 232, 14);
+    background-color: green;
 }
 .status-color-process {
     background-color: blue;

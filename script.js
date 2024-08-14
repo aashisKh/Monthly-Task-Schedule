@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 let days = document.getElementById("days");
 let monthYear = document.getElementById("monthYear");
 let prevMonth = document.getElementById("prevMonth");
@@ -37,26 +45,6 @@ let tasks = {
           amPms:"am",
           fullDate: `8/12/2024`,
           taskStatus: 'new'
-        },
-      ],
-      14: [
-        {
-          task: "Task1  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, sit.",
-          time: "09:30 am",
-        },
-      ],
-    },
-    9: {
-      12: [
-        {
-          task: "Sept 12  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, sit.",
-          time: "09:30 am",
-        },
-      ],
-      14: [
-        {
-          task: "Sept 14  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, sit.",
-          time: "09:30 am",
         },
       ],
     },
@@ -218,14 +206,14 @@ const displayTask = (dailyTasks) => {
       let li = document.createElement("li");
       let p = document.createElement("p")
       let div = document.createElement('div')
-      let status = document.createElement('span')
+      // let status = document.createElement('span')
       let amPmTime = document.createElement('span')
       let small = document.createElement("small");
       let edit = document.createElement('i')
 
       div.setAttribute("id","task-status-time")
-      status.setAttribute("id","status")
-      status.classList.add(`status-color-${taskStatus}`)
+      // status.setAttribute("id","status")
+      li.classList.add(`status-color-${taskStatus}`)
        
       amPmTime.setAttribute("id","time")
       edit.setAttribute('data-index',index)
@@ -233,7 +221,7 @@ const displayTask = (dailyTasks) => {
       p.textContent = task;
       small.textContent = time;
 
-      div.appendChild(status)
+      // div.appendChild(status)
       amPmTime.appendChild(small)
       amPmTime.appendChild(edit)
       div.appendChild(amPmTime)
