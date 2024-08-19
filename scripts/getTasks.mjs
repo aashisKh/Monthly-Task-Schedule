@@ -12,11 +12,14 @@ const getUserTasks = async (date) => {
             'Authorization': `Bearer ${token}`
         }
     })
-    if(initialResponse.status == 401){
+    if(initialResponse.status != 200){
     window.localStorage.removeItem('token')
-        window.location.href = 'index.html'
+    window.location = 'index.html'
+    }else{
+        const response = await initialResponse.json()
+        return response
     }
-    return await initialResponse.json()
+    
 }
 
 export {

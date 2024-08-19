@@ -3,7 +3,6 @@ import { getToken } from "./getToken.mjs"
 
 
 const addUserTask = async (newTask) => {
-    console.log(newTask)
     const token = getToken()
     const initialResponse = await fetch('http://localhost:4000/task/addtask',{
         method: "POST",
@@ -13,9 +12,13 @@ const addUserTask = async (newTask) => {
         },
         body: JSON.stringify(newTask)
     })
-
-    return await initialResponse.json()
-    
+    if(initialResponse.status != 200){
+        window.localStorage.removeItem('token')
+        window.location = 'index.html'
+    }else{
+        const response = await initialResponse.json()
+        return response
+        }
 }
 
 

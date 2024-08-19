@@ -13,7 +13,13 @@ const getUserTaskById = async (id) => {
         }
     })
 
-    return await initialResponse.json()
+    if(initialResponse.status != 200){
+        window.localStorage.removeItem('token')
+        window.location = 'index.html'
+    }else{
+        const response = await initialResponse.json()
+        return response
+        }
 }
 
 export {

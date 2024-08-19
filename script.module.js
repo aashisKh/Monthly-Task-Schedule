@@ -1,5 +1,4 @@
 
-
 import { getUserTasks } from "./scripts/getTasks.mjs";
 import { addUserTask } from "./scripts/addTasks.mjs";
 import { getUserTaskById } from "./scripts/getTaskById.mjs";
@@ -100,8 +99,11 @@ const handleAddTask = async () => {
     alert(taskResponse.message)
     taskInputBox.style.visibility = "hidden";
     const fetchTask = await getUserTasks(newTask.date)
-    displayTask(fetchTask)
+    if(fetchTask){
+      displayTask(fetchTask);
+    }
     userSelectedDate = undefined
+    clearTaskValues()
     return 
   }
   return alert(taskResponse.message)
@@ -189,7 +191,9 @@ const updateTask = async () => {
   updateTaskStatusSection.style.visibility = 'hidden'
   taskInputBox.style.visibility = "hidden";
   taskStatusState = 'new'  
-  displayTask(getTaskList)
+  if(getTaskList){
+    displayTask(getTaskList);
+  }
 
 }
 
@@ -247,7 +251,6 @@ const handleEditTask = async (e) => {
     updateTaskStatusSection.style.visibility = 'visible'
     
     const {am_pm, taskname, time, taskid, task_status} = selectedTask.tasks[0]
-    console.log({am_pm, taskname, time, taskid, task_status})
     const hour = time.split(":")[0]
     const minute = time.split(":")[1]
     taskName.innerText = taskname
@@ -273,7 +276,7 @@ const handleEditTask = async (e) => {
 
 const displayTask = (dailyTasks) => {
   taskLists.innerHTML = "";
-  if (dailyTasks.tasks.length != 0) {
+  if (dailyTasks && dailyTasks.tasks.length != 0) {
     dailyTasks.tasks.forEach((taskObj,index) => {
       const { taskname, time,task_status,am_pm,taskid } = taskObj;
       let li = document.createElement("li");
@@ -331,14 +334,19 @@ const setBgColor = async (e) => {
     userSelectedDate = undefined
     const taskDate = `${year}-${month}-${date.getDate()}`
     const dailyTasks = await getUserTasks(taskDate) 
-    displayTask(dailyTasks);
+    if(dailyTasks){
+      displayTask(dailyTasks);
+    }
   } else {
     selectedDate = getIndexofDate(e);
     e.target.classList.add("selectedDate");
     const taskDate = `${year}-${month}-${day}`
     // const dailyTasks = getTasks(year, month, day);
     const dailyTasks = await getUserTasks(taskDate)
-    displayTask(dailyTasks);
+    if(dailyTasks){
+      displayTask(dailyTasks);
+    }
+    
   }
 };
 
@@ -386,7 +394,10 @@ const renderCalendar = async () => {
   // const dailyTasks = getTasks(year, month + 1, date.getDate());
   const dateToFetchTask = `${year}-${month + 1}-${date.getDate()}`
   const dailyTasks = await getUserTasks(dateToFetchTask)
-  displayTask(dailyTasks);
+  if(dailyTasks){
+    displayTask(dailyTasks);
+  }
+  
 };
 renderCalendar();
 

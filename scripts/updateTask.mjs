@@ -5,7 +5,6 @@ import { getToken } from "./getToken.mjs"
 
 
 const updateUserTask = async (taskToUpdate) => {
-    console.log(taskToUpdate)
     const token = getToken()
     const initialResponse = await fetch('http://localhost:4000/task/updatetask',{
         method: "POST",
@@ -16,7 +15,13 @@ const updateUserTask = async (taskToUpdate) => {
         body: JSON.stringify(taskToUpdate)
     })
 
-    return await initialResponse.json()
+    if(initialResponse.status != 200){
+        window.localStorage.removeItem('token')
+        window.location = 'index.html'
+        }else{
+            const response = await initialResponse.json()
+            return response
+        }
     
 }
 
