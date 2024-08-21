@@ -4,6 +4,7 @@ import { addUserTask } from "./scripts/addTasks.mjs";
 import { getUserTaskById } from "./scripts/getTaskById.mjs";
 import { updateUserTask } from "./scripts/updateTask.mjs";
 
+
 let days = document.getElementById("days");
 let monthYear = document.getElementById("monthYear");
 let prevMonth = document.getElementById("prevMonth");
@@ -26,6 +27,9 @@ let div;
 let statusBox = document.querySelectorAll('.status-box')
 let updateTaskStatusSection = document.getElementById("update-task-status-section")
 let taskStatusTime = document.getElementById("task-status-time")
+let currentlySelectedTaskStatusIndex = undefined
+let previousSelectedTaskStatusIndex = undefined
+let ele = document.getElementById("update-task-status-box")
 let taskStatusState = 'new'
 let taskToUpdateIndex = undefined
 let selectedDate;
@@ -172,7 +176,9 @@ const updateTask = async () => {
   clearTaskValues()
   taskInputBox.style.visibility = "hidden";
   let dateToFetchUpdatedTask = ''
-
+  if(previousSelectedTaskStatusIndex){
+    ele.children[previousSelectedTaskStatusIndex].classList.remove('set-task-status-border')
+  }
   if (userSelectedDate) {
     dateToFetchUpdatedTask = `${year}-${month}-${userSelectedDate}`
     // isUpdated = updateTaskFromIndex(year, month, userSelectedDate, taskToUpdateIndex, newTask);
@@ -421,11 +427,11 @@ cancel.onclick = () => {
   document.body.style.overflowY = "auto";
   updateTaskButton.style.display = 'none'
   updateTaskStatusSection.style.visibility = "hidden"
+  if(previousSelectedTaskStatusIndex){
+    ele.children[previousSelectedTaskStatusIndex].classList.remove('set-task-status-border')
+  }
   clearTaskValues()
 };
-let currentlySelectedTaskStatusIndex = undefined
-let previousSelectedTaskStatusIndex = undefined
-let ele = document.getElementById("update-task-status-box")
 
 const getcurrentlySelectedTaskStatusIndex = (e) => {
   
@@ -435,11 +441,9 @@ const getcurrentlySelectedTaskStatusIndex = (e) => {
 
 const handleTaskStatusUpdateColor = (e) => {
   let selectedTaskIndex = getcurrentlySelectedTaskStatusIndex(e)
-
   const getTaskStatus = e.target.getAttribute('data-status')
 
   if(e.target.classList.contains('set-task-status-border')){
-
     taskStatusState = 'new'
     e.target.classList.remove('set-task-status-border')
     return 
@@ -451,7 +455,6 @@ const handleTaskStatusUpdateColor = (e) => {
       ele.children[previousSelectedTaskStatusIndex].classList.remove('set-task-status-border')
 
     }
-
     e.target.classList.add('set-task-status-border')
     previousSelectedTaskStatusIndex = selectedTaskIndex
 
