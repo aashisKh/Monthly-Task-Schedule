@@ -272,6 +272,7 @@ const handleEditTask = async (e) => {
     taskInputBox.style.visibility = "visible";
     updateTaskStatusSection.style.visibility = 'visible'
     
+    
     const {am_pm, taskname, time, taskid, task_status} = selectedTask.tasks[0]
     const hour = time.split(":")[0]
     const minute = time.split(":")[1]
@@ -438,6 +439,7 @@ addTaskPlusButton.onclick = () => {
   addTaskButton.style.display = 'inline-block'
   updateTaskButton.style.display = 'none'
   document.body.style.overflowY = "hidden";
+  taskName.focus()
 };
 
 updateTaskButton.onclick = updateTask
