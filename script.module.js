@@ -23,6 +23,7 @@ let hours = document.getElementById("hours")
 let minutes = document.getElementById("minutes")
 let amPm = document.getElementById("am-pm")
 let date = new Date();
+
 let div;
 let statusBox = document.querySelectorAll('.status-box')
 let updateTaskStatusSection = document.getElementById("update-task-status-section")
@@ -54,12 +55,27 @@ let tasks = {
   },
 };
 
+
+
 const getYearMonthDay = () => {
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
   let day = date.getDate();
   return { year, month, day };
 };
+
+const checkTaskDate = (year,month,day) => {
+  const today = new Date();
+  const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const taskDate = new Date(year, month - 1, day);
+
+  if (taskDate < todayDate) {
+    addTaskPlusButton.style.visibility = 'hidden';
+  } else {
+    addTaskPlusButton.style.visibility = 'visible';
+  }
+};
+
 
 const clearTaskValues = () => {
   taskName.innerText = ''
@@ -323,7 +339,9 @@ const displayTask = (dailyTasks) => {
 
 const setBgColor = async (e) => {
   userSelectedDate = parseInt(e.target.innerText);
+  checkTaskDate(date.getFullYear(), date.getMonth() + 1, userSelectedDate)
   if (selectedDate && selectedDate != getIndexofDate(e)) {
+
     days.children[selectedDate].classList.remove("selectedDate");
   }
   if (getIndexofDate(e) < todayDate) {
@@ -339,6 +357,7 @@ const setBgColor = async (e) => {
     // const dailyTasks = getTasks(year, month, date.getDate());
     userSelectedDate = undefined
     const taskDate = `${year}-${month}-${date.getDate()}`
+    checkTaskDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
     const dailyTasks = await getUserTasks(taskDate) 
     if(dailyTasks){
       displayTask(dailyTasks);
@@ -403,13 +422,14 @@ const renderCalendar = async () => {
   if(dailyTasks){
     displayTask(dailyTasks);
   }
-  
 };
 renderCalendar();
 
 const changeMonth = (month) => {
   userSelectedDate = undefined;
   date.setMonth(date.getMonth() + month);
+
+  checkTaskDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
   renderCalendar();
 };
 
