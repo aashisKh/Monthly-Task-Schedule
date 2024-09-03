@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../design.css">
 </head>
-<body>
 
+<body>
+    <audio id="audioPlayer" src="./notification-sound.mp3"></audio>
     <div id="task-input-box">
         <div id="task-box">
             <div contenteditable="true" id="task-name" placeholder="Task Name"></div>
@@ -44,7 +46,7 @@
             <div id="update-task-status-section">
                 <div id="update-task-status-box">
                     <h5>Task Status</h5>
-                    <small>Process</small> <span class="process status-box" data-status="process" data-index = '0'></span>
+                    <small>Process</small> <span class="process status-box" data-status="process" data-index='0'></span>
                     <small>Done</small> <span class="done status-box" data-status="done" data-index="1"></span>
                     <small>Cancel</small> <span class="cancel status-box" data-status="cancel" data-index="2"></span>
                 </div>
@@ -63,7 +65,7 @@
                 <div id="prevMonth" class="changeMonth"> &lt; </div>
                 <div id="monthYear"></div>
                 <div id="nextMonth" class="changeMonth"> &gt; </div>
-                
+
             </div>
             <div id="calendar-days">
                 <div class="weekdays">
@@ -79,20 +81,25 @@
                 </div>
             </div>
         </div>
-       
+
         <div id="task-list-box">
             <div>
                 <div id="task-heading"> Task Lists </div>
                 <div id="task-lists">
                     <ul id="tasks">
                     </ul>
-                    
+
                 </div>
             </div>
             <div id="add-task"> + </div>
         </div>
     </div>
 
-    <script type="module"  src="./script.module.js"></script>
+    <div class="notification-section" id="notification">
+    </div>
+
+
+    <script type="module" src="./script.module.js"></script>
 </body>
+
 </html>

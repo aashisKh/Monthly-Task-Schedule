@@ -1,0 +1,50 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Local HTML</title>
+</head>
+<body>
+    <h1>Fetch Local HTML Example</h1>
+    <div id="content"></div>
+
+    <script>
+        fetch('./abc.html') // Use relative path to your local file
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // console.log(data)
+                let domParser = new DOMParser()
+                let doc =  domParser.parseFromString(data, 'text/html')
+                let content = doc.body.children[0]
+                console.log(content)
+                document.getElementById('content').innerHTML = content;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Local HTML</title>
+</head>
+<body>
+    <h1>Fetch Local HTML Example</h1>
+    <div id="content"></div>
+
+    <script>
+      console.log(process.env.TEMP)
+    </script>
+</body>
+</html>
